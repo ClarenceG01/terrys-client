@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.footer {
+  background: hsl(0, 0%, 0%);
+  height: fit-content;
+  flex-shrink: 0;
+  padding: 5rem 5rem;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* max-width: 400px; */
+}
+.footer-socials span {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 1.2px;
+}
+.footer-socials p {
+  color: #8e8e8e;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 166.667% */
+  letter-spacing: 0.48px;
+}
+.footer-logos {
+  display: flex;
+}
+.footer-logos img {
+  margin-right: 15px;
+  cursor: pointer;
+}
+.footer-logos img:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
+}
+.footer-details {
+  display: flex;
+}
+.footer-details ul {
+  padding: 0;
+  margin-top: 0;
+}
+.footer-details ul:nth-child(1),
+ul:nth-child(2) {
+  margin-right: 2.5rem;
+}
+
+.footer-details ul li {
+  list-style-type: none;
+  color: #8e8e8e;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 166.667% */
+  letter-spacing: 0.48px;
+}
+.footer-details ul span {
+  color: #d9d9d9;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 166.667% */
+  letter-spacing: 0.48px;
+}
+/* media queries */
+@media screen and (max-width: 1135px) {
+}
+@media screen and (max-width: 880px) {
+  .footer {
+    padding: 3rem;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-socials {
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 440px) {
+  .footer-details {
+    display: none;
+  }
+}
