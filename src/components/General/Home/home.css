@@ -121,6 +121,10 @@
   letter-spacing: -0.96px;
   cursor: pointer;
 }
+.arrow-icon {
+  margin-left: 1rem;
+  cursor: pointer;
+}
 .join-community {
   background: #e5c643;
   width: 100vw;

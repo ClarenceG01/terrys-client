@@ -3,8 +3,8 @@ import "./login.css";
 import axios from "axios";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
+import Alertbox from "../AlertBox/Alertbox";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ const Login = () => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [alertContent, setAlertContent] = useState(null);
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -30,35 +32,19 @@ const Login = () => {
         username: user.username,
         password: user.password,
       });
-      const role = response.data.result;
+      const role = response.data.role;
       if (response.data.success) {
-        toast("Login Successful", {
-          icon: "✅",
-          position: "top-right",
-        });
+        setAlertContent("Login successfull");
         setTimeout(() => {
           if (role === "Member") {
-            navigate("/dashboard", { state: { username: user.username } });
+            navigate("/shop", { state: { username: user.username } });
           } else if (role === "Admin") {
-            navigate("/admin", { state: { username: user.username } });
+            navigate("/dashboard", { state: { username: user.username } });
           }
         }, 3000);
       }
     } catch (error) {
-      console.log(error.response.data.message);
-      if (error.response.data.message.includes("User")) {
-        toast("User not found", {
-          icon: "❌",
-          position: "top-right",
-        });
-        // <AlertBox content="User not found" />;
-      }
-      if (error.response.data.message.includes("password")) {
-        toast("Incorrect Password", {
-          icon: "❌",
-          position: "top-right",
-        });
-      }
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -121,6 +107,7 @@ const Login = () => {
             <span className="link">Don't have an account,Sign Up</span>
           </NavLink>
         </form>
+        {alertContent && <Alertbox content={alertContent} status="success" />}
       </section>
     </div>
   );

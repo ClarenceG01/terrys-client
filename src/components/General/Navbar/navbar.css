@@ -45,6 +45,9 @@
   overflow: hidden;
   padding-bottom: 3px;
 }
+.nav-links a:hover {
+  color: black;
+}
 .nav-links a::before {
   content: "";
   position: absolute;

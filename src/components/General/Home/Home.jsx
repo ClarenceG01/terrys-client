@@ -11,8 +11,13 @@ import vs from "../../../assets/vs.png";
 import sample from "../../../assets/sample.jpg";
 import Button from "@mui/material/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleExplore = () => {
+    navigate("/shop");
+  };
   return (
     <div className="home">
       <section className="hero-section">
@@ -52,41 +57,41 @@ const Home = () => {
           <div className="product-container">
             <img src={sample} alt="" />
             <span className="product-name">Tresor Midnight Rose</span>
-            <span className="explore">
+            <span className="explore" onClick={handleExplore}>
               Explore product
-              <FaArrowRightLong />
+              <FaArrowRightLong className="arrow-icon" />
             </span>
           </div>
           <div className="product-container">
             <img src={sample} alt="" />
             <span className="product-name">Tresor Midnight Rose</span>
-            <span className="explore">
+            <span className="explore" onClick={handleExplore}>
               Explore product
-              <FaArrowRightLong />
+              <FaArrowRightLong className="arrow-icon" />
             </span>
           </div>
           <div className="product-container">
             <img src={sample} alt="" />
             <span className="product-name">Tresor Midnight Rose</span>
-            <span className="explore">
+            <span className="explore" onClick={handleExplore}>
               Explore product
-              <FaArrowRightLong />
+              <FaArrowRightLong className="arrow-icon" />
             </span>
           </div>
           <div className="product-container">
             <img src={sample} alt="" />
             <span className="product-name">Tresor Midnight Rose</span>
-            <span className="explore">
+            <span className="explore" onClick={handleExplore}>
               Explore product
-              <FaArrowRightLong />
+              <FaArrowRightLong className="arrow-icon" />
             </span>
           </div>
           <div className="product-container">
             <img src={sample} alt="" />
             <span className="product-name">Tresor Midnight Rose</span>
-            <span className="explore">
+            <span className="explore" onClick={handleExplore}>
               Explore product
-              <FaArrowRightLong />
+              <FaArrowRightLong className="arrow-icon" />
             </span>
           </div>
         </div>
