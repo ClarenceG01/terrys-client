@@ -111,3 +111,17 @@ label {
 form span {
   margin-bottom: 0 !important;
 }
+.div-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.div-btn button {
+  background-color: #ebd96b;
+  color: white;
+}
+.div-btn button:hover {
+  transform: scale(1.01);
+  border: 1px solid black;
+}

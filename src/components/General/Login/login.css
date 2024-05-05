@@ -88,3 +88,11 @@ form > input,
   line-height: normal;
   margin-bottom: 1rem;
 }
+.error-msg {
+  color: red;
+  font-family: "Poppins", sans-serif;
+}
+.success-msg {
+  color: rgb(10, 194, 10);
+  font-family: "Poppins", sans-serif;
+}

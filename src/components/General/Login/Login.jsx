@@ -4,9 +4,10 @@ import axios from "axios";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
-import Alertbox from "../AlertBox/Alertbox";
+import baseUrl from "../../../utils/baseUrl";
 
 const Login = () => {
+  const url = baseUrl();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
@@ -14,7 +15,9 @@ const Login = () => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [alertContent, setAlertContent] = useState(null);
+  const [error, setError] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [responseMsg, setResponseMsg] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,20 +31,34 @@ const Login = () => {
     try {
       setIsLoading(true);
       e.preventDefault();
-      const response = await axios.post("http://localhost:4040/login", {
-        username: user.username,
-        password: user.password,
-      });
+      if (user.username === "" || user.password === "") {
+        setResponse(true);
+        setError(true);
+        setResponseMsg("Please fill all fields");
+        setTimeout(() => {
+          setResponse(false);
+        }, 5000);
+      }
+      const response = await axios.post(
+        `${url}/login`,
+        {
+          username: user.username,
+          password: user.password,
+        },
+        { withCredentials: true }
+      );
       const role = response.data.role;
       if (response.data.success) {
-        setAlertContent("Login successfull");
+        setResponse(true);
+        setError(false);
+        setResponseMsg(response.data.message);
         setTimeout(() => {
           if (role === "Member") {
             navigate("/shop", { state: { username: user.username } });
           } else if (role === "Admin") {
             navigate("/dashboard", { state: { username: user.username } });
           }
-        }, 3000);
+        }, 5000);
       }
     } catch (error) {
       console.log(error);
@@ -85,6 +102,11 @@ const Login = () => {
               />
             )}
           </div>
+          {response && (
+            <span className={error ? "error-msg" : "success-msg"}>
+              {responseMsg}
+            </span>
+          )}
           <button
             type="submit"
             className={
@@ -107,7 +129,6 @@ const Login = () => {
             <span className="link">Don't have an account,Sign Up</span>
           </NavLink>
         </form>
-        {alertContent && <Alertbox content={alertContent} status="success" />}
       </section>
     </div>
   );

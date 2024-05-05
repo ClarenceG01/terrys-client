@@ -1,8 +1,8 @@
 import React from "react";
 import "./navbar.css";
 import logo from "../../../assets/logo.png";
-// import { Button } from "@mui/material";
-import { Button } from "react-bootstrap";
+import { IoSearch } from "react-icons/io5";
+import { RiShoppingCartLine } from "react-icons/ri";
 const Navbar = () => {
   return (
     <div className="navbar">
@@ -11,10 +11,13 @@ const Navbar = () => {
         <span className="logos-title">Terry's</span>
       </div>
       <div className="search">
-        <input type="search" name="" id="" />
-        <Button variant="primary">Button</Button>
+        <input type="text" name="" id="" />
+        <IoSearch className="search-icon" />
       </div>
-      <div className="extras"></div>
+      <div className="extras">
+        <a href="#new-arrivals">Home</a>
+        <RiShoppingCartLine className="cart" />
+      </div>
     </div>
   );
 };
