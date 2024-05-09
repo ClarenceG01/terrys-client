@@ -100,10 +100,13 @@ label {
   border-color: red !important;
 }
 .show-error {
+  margin: 0 auto;
   font-family: Poppins;
   font-size: 0.875rem;
   color: red;
   text-align: center;
+  max-width: 300px;
+  flex-wrap: wrap;
 }
 .offset-error {
   display: none;

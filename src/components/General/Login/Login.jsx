@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import baseUrl from "../../../utils/baseUrl";
+import successToast from "../../../utils/successToast";
 
 const Login = () => {
   const url = baseUrl();
@@ -52,13 +53,14 @@ const Login = () => {
         setResponse(true);
         setError(false);
         setResponseMsg(response.data.message);
+        successToast("Login successfull");
         setTimeout(() => {
           if (role === "Member") {
             navigate("/shop", { state: { username: user.username } });
           } else if (role === "Admin") {
             navigate("/dashboard", { state: { username: user.username } });
           }
-        }, 5000);
+        }, 4000);
       }
     } catch (error) {
       console.log(error);

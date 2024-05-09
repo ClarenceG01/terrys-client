@@ -24,20 +24,7 @@ const Home = () => {
         <div className="left-container">
           <img src={poster} alt="" className="poster" />
           <span>Where Every Scent Tells a Story.</span>
-          <Button
-            variant="contained"
-            sx={{
-              borderRadius: "7px",
-              backgroundColor: "black",
-              color: "white",
-              "&:hover": {
-                backgroundColor: " #EBD96B;", // Change the background color on hover
-                color: "white", // Change the text color on hover
-              },
-            }}
-          >
-            Shop Now
-          </Button>
+          <button className="leftcont-btn">Shop Now</button>
         </div>
         <div className="img-container">
           <img src={hero} alt="" />

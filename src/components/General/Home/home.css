@@ -1,4 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@keyframes slide {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +36,9 @@
   height: fit-content;
 }
 .hero-section {
-  margin: 4rem 6rem;
+  width: 80%;
   padding: 3rem 2rem;
+  margin: 3rem auto;
   border-radius: 59px;
   background: #f4f6f5;
   height: fit-content;
@@ -22,6 +50,23 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.left-container > * {
+  animation: bounce 1s;
+}
+.leftcont-btn {
+  border-radius: 7px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+.leftcont-btn:hover {
+  background-color: #ebd96b;
+  color: white;
+  border: none;
+}
+.left-container:hover > * {
+  animation: none;
 }
 .left-container > *:nth-child(1),
 .left-container > *:nth-child(2) {
@@ -47,6 +92,7 @@
 }
 .img-container {
   width: 50%;
+  animation: fade 2s ease-in-out forwards;
 }
 .img-container img {
   width: 100%;
@@ -127,7 +173,7 @@
 }
 .join-community {
   background: #e5c643;
-  width: 100vw;
+  width: 100%;
   height: 55vh;
 }
 .join-community form {

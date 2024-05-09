@@ -3,6 +3,7 @@ import "./navbar.css";
 import logo from "../../../assets/logo.png";
 import { IoSearch } from "react-icons/io5";
 import { RiShoppingCartLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar">
@@ -15,7 +16,7 @@ const Navbar = () => {
         <IoSearch className="search-icon" />
       </div>
       <div className="extras">
-        <a href="#new-arrivals">Home</a>
+        <NavLink to="/">Home</NavLink>
         <RiShoppingCartLine className="cart" />
       </div>
     </div>

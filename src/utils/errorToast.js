@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-function successToast(message) {
-  return toast.success(message, {
+function errorToast(message) {
+  return toast.error(message, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -11,4 +11,4 @@ function successToast(message) {
     theme: "light",
   });
 }
-export default successToast;
+export default errorToast;
