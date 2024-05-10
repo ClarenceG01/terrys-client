@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
-    username: "",
+    credential: "",
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -25,8 +25,10 @@ const Login = () => {
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-    console.log(user);
+    setUser({
+      ...user,
+      [name]: value,
+    });
   };
   const handleSubmit = async (e) => {
     try {
@@ -43,8 +45,9 @@ const Login = () => {
       const response = await axios.post(
         `${url}/login`,
         {
-          username: user.username,
-          password: user.password,
+          username: user.credential,
+          email: user.credential,
+          pwd: user.password,
         },
         { withCredentials: true }
       );
@@ -55,7 +58,7 @@ const Login = () => {
         setResponseMsg(response.data.message);
         successToast("Login successfull");
         setTimeout(() => {
-          if (role === "Member") {
+          if (role === "user") {
             navigate("/shop", { state: { username: user.username } });
           } else if (role === "Admin") {
             navigate("/dashboard", { state: { username: user.username } });
@@ -79,9 +82,9 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Enter Username"
-            value={user.username}
-            name="username"
+            placeholder="Enter Username / email"
+            value={user.credential}
+            name="credential"
             onChange={handleChange}
           />
           <div className="input-holder">
@@ -117,7 +120,7 @@ const Login = () => {
           >
             {isLoading ? (
               <ThreeDots
-                height="50"
+                height="30"
                 width="50"
                 radius="10"
                 color="gray"
