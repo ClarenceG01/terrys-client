@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import baseUrl from "../../../utils/baseUrl";
+import baseUrl from "../../utils/baseUrl";
 import axios from "axios";
-import successToast from "../../../utils/successToast";
-import errorToast from "../../../utils/errorToast";
+import successToast from "../../utils/successToast";
+import errorToast from "../../utils/errorToast";
 
 const Form1 = () => {
   const location = useLocation();

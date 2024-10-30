@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import errorToast from "../../../utils/errorToast";
+import errorToast from "../../utils/errorToast";
 import { useNavigate, NavLink } from "react-router-dom";
 const Form1 = () => {
   const navigate = useNavigate();

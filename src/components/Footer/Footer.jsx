@@ -1,8 +1,8 @@
 import React from "react";
 import "./footer.css";
-import facebook from "../../../assets/f.svg";
-import ig from "../../../assets/ig.svg";
-import twitter from "../../../assets/twitter.svg";
+import facebook from "/f.svg";
+import ig from "/ig.svg";
+import twitter from "/twitter.svg";
 
 const Footer = () => {
   return (

@@ -4,8 +4,8 @@ import axios from "axios";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
-import baseUrl from "../../../utils/baseUrl";
-import successToast from "../../../utils/successToast";
+import baseUrl from "../../utils/baseUrl";
+import successToast from "../../utils/successToast";
 
 const Login = () => {
   const url = baseUrl();
