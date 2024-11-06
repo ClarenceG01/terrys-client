@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import "./login.css";
 import axios from "axios";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { NavLink, useNavigate } from "react-router-dom";
-import { ThreeDots } from "react-loader-spinner";
+import { Link, useNavigate } from "react-router-dom";
 import baseUrl from "../../utils/baseUrl";
 import successToast from "../../utils/successToast";
+import LoadingButton from "../LoadingButton";
+import PasswordInput from "../PasswordInput";
 
 const Login = () => {
   const url = baseUrl();
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
     credential: "",
     password: "",
@@ -20,9 +18,6 @@ const Login = () => {
   const [response, setResponse] = useState(null);
   const [responseMsg, setResponseMsg] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -72,70 +67,49 @@ const Login = () => {
     }
   };
   return (
-    <div className="signup">
-      <section className="left-section"></section>
-      <section className="signup-section">
-        <div className="words">
-          <span className="head">Hello Again!</span>
-          <span className="tail">Welcome Back</span>
-        </div>
-        <form onSubmit={handleSubmit}>
+    <section className="font-inter w-full h-screen flex flex-col md:w-1/2 justify-center items-center">
+      <div className="flex flex-col items-center text-[#333] mb-2">
+        <span className="text-2xl">Hello!</span>
+        <span className="text-lg">Welcome Back</span>
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full h-1/3 flex flex-col justify-between items-center"
+      >
+        <div>
           <input
             type="text"
             placeholder="Enter Username / email"
             value={user.credential}
             name="credential"
             onChange={handleChange}
+            className="border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg"
           />
-          <div className="input-holder">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter password"
-              value={user.password}
-              name="password"
-              onChange={handleChange}
-            />
-            {showPassword ? (
-              <AiOutlineEyeInvisible
-                onClick={togglePasswordVisibility}
-                className="p-eye"
-              />
-            ) : (
-              <AiOutlineEye
-                onClick={togglePasswordVisibility}
-                className="p-eye"
-              />
-            )}
-          </div>
-          {response && (
-            <span className={error ? "error-msg" : "success-msg"}>
-              {responseMsg}
-            </span>
-          )}
-          <button
-            type="submit"
-            className={
-              user.username === "" || user.password === "" ? "no-btn" : "btn"
-            }
-          >
-            {isLoading ? (
-              <ThreeDots
-                height="30"
-                width="50"
-                radius="10"
-                color="gray"
-                ariaLabel="three-dots-loading"
-              />
-            ) : (
-              <span>Login</span>
-            )}
-          </button>
-          <NavLink to="/signup">
-            <span className="link">Don't have an account,Sign Up</span>
-          </NavLink>
-        </form>
-      </section>
-    </div>
+        </div>
+        <PasswordInput value={user.password} onChange={handleChange} />
+        {response && (
+          <span className={error ? "error-msg" : "success-msg"}>
+            {responseMsg}
+          </span>
+        )}
+        <LoadingButton
+          className={
+            user.username === "" || user.password === ""
+              ? "bg-slate-300 "
+              : "bg-primary "
+          }
+          isLoading={isLoading}
+          disabled={!user.credential || !user.password}
+        >
+          Twende
+        </LoadingButton>
+        <Link to="signup">
+          <span className="font-inter underline hover:text-slate-800">
+            Don't have an account,Sign Up
+          </span>
+        </Link>
+      </form>
+    </section>
   );
 };
 

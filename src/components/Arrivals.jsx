@@ -6,7 +6,7 @@ import Products from "./Products";
 const Arrivals = () => {
   return (
     <div className="py-4 px-24">
-      <p className="font-poppins text-2xl mb-6">Fresh Arrivals</p>
+      <p className="font-poppins text-3xl mb-6">Fresh Arrivals</p>
       <Products>
         <Product name="Sauvage Dior EDP" image={sauvage} />
         <Product name="Creed Aventus" image={sauvage} />

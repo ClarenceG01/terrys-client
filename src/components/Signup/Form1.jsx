@@ -54,9 +54,9 @@ const Form1 = () => {
   return (
     <section className="signup-section">
       <form onSubmit={handleSubmit}>
-        <div className="words">
-          <span className="head">Hello!</span>
-          <span className="tail">Sign Up to Get Started</span>
+        <div className="flex flex-col items-center text-[#333]">
+          <span className="text-2xl">Hello!</span>
+          <span className="text-lg">Sign Up to Get Started</span>
         </div>
         <div className="input-holder">
           <label htmlFor="address1">Address Line 1:</label>

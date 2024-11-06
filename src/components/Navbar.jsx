@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "../../../public/logo.png";
+import logo from "../../public/logo.png";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/user");
   };
   return (
     <div className="flex justify-between items-center py-4 px-4 ">

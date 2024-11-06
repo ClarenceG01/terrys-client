@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import errorToast from "../../utils/errorToast";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import PasswordInput from "../PasswordInput";
+
 const Form1 = () => {
   const navigate = useNavigate();
   //regex
@@ -14,16 +15,7 @@ const Form1 = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [cpassword, setCpassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showCPassword, setShowCPassword] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-  const toggleCpwdVisibility = () => {
-    setShowCPassword(!showCPassword);
-  };
   // validate function
   const validate = (values) => {
     let errors = {};
@@ -75,51 +67,49 @@ const Form1 = () => {
   };
 
   return (
-    <section className="signup-section">
-      <div className="words">
-        <span className="head">Hello!</span>
-        <span className="tail">Sign Up to Get Started</span>
+    <section className="w-full md:w-1/2 h-screen font-inter flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center text-[#333]">
+        <span className="text-2xl">Hello!</span>
+        <span className="text-lg">Sign Up to Get Started</span>
       </div>
-      <form>
-        <div className="input-holder">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            placeholder="Enter Username"
-            value={username}
-            aria-describedby="usernote"
-            onChange={(e) => setUsername(e.target.value)}
-            autoComplete="off"
-            className={
-              formErrors.hasOwnProperty("username") ? "error" : "no-error"
-            }
-          />
-        </div>
+      <form className=" h-1/2 flex flex-col justify-between">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+          value={username}
+          aria-describedby="usernote"
+          onChange={(e) => setUsername(e.target.value)}
+          autoComplete="off"
+          className={`border-1 py-3 px-7 w-80 rounded-3xl text-lg ${
+            formErrors.hasOwnProperty("username")
+              ? " border-red-600"
+              : "border-[#b9b8b8]"
+          }`}
+        />
         <span
           className={
             formErrors.hasOwnProperty("username")
-              ? "show-error"
-              : "offset-error"
+              ? " border-red-600"
+              : "border-[#b9b8b8]"
           }
         >
           {formErrors.username}
         </span>
-        <div className="input-holder">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter email"
-            value={email}
-            aria-describedby="usernote"
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="off"
-            className={
-              formErrors.hasOwnProperty("email") ? "error" : "no-error"
-            }
-          />
-        </div>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter email"
+          value={email}
+          aria-describedby="usernote"
+          onChange={(e) => setEmail(e.target.value)}
+          autoComplete="off"
+          className={`border-1 py-3 px-7 w-80 rounded-3xl text-lg ${
+            formErrors.hasOwnProperty("username")
+              ? " border-red-600"
+              : "border-[#b9b8b8]"
+          }`}
+        />
         <span
           className={
             formErrors.hasOwnProperty("email") ? "show-error" : "offset-error"
@@ -127,30 +117,11 @@ const Form1 = () => {
         >
           {formErrors.email}
         </span>
-        <div className="input-holder">
-          <label htmlFor="password">Password:</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={
-              formErrors.hasOwnProperty("password") ? "error" : "no-error"
-            }
-          ></input>
-          {showPassword ? (
-            <AiOutlineEyeInvisible
-              onClick={togglePasswordVisibility}
-              className="p-eye"
-            />
-          ) : (
-            <AiOutlineEye
-              onClick={togglePasswordVisibility}
-              className="p-eye"
-            />
-          )}
-        </div>
+        <PasswordInput
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <span
           className={
             formErrors.hasOwnProperty("password")
@@ -160,27 +131,11 @@ const Form1 = () => {
         >
           {formErrors.password}
         </span>
-        <div className="input-holder">
-          <label htmlFor="cpassword">Confirm Password:</label>
-          <input
-            id="cpassword"
-            type={showCPassword ? "text" : "password"}
-            placeholder="Confirm password"
-            value={cpassword}
-            onChange={(e) => setCpassword(e.target.value)}
-            className={
-              formErrors.hasOwnProperty("cpassword") ? "error" : "no-error"
-            }
-          />
-          {showCPassword ? (
-            <AiOutlineEyeInvisible
-              onClick={toggleCpwdVisibility}
-              className="cp-eye"
-            />
-          ) : (
-            <AiOutlineEye onClick={toggleCpwdVisibility} className="cp-eye" />
-          )}
-        </div>
+        <PasswordInput
+          placeholder="Confirm Password"
+          value={cpassword}
+          onChange={(e) => setCpassword(e.target.value)}
+        />
         <span
           className={
             formErrors.hasOwnProperty("cpassword")
@@ -190,17 +145,25 @@ const Form1 = () => {
         >
           {formErrors.cpassword}
         </span>
-        <div className="div-btn">
-          <NavLink to="/">
-            <button>Back Home</button>
-          </NavLink>
-
-          <button onClick={(e) => handleNext(e)}>Next</button>
+        <div className="my-4 text-white flex justify-between">
+          <Link to="/">
+            <button className="bg-primary py-1 px-2 rounded-lg cursor-pointer">
+              Back Home
+            </button>
+          </Link>
+          <button
+            className="bg-primary py-1 px-2 rounded-lg cursor-pointer"
+            onClick={(e) => handleNext(e)}
+          >
+            Next
+          </button>
         </div>
       </form>
-      <NavLink to="/login">
-        <span className="link">Already have an account,Login</span>
-      </NavLink>
+      <Link to="/user">
+        <span className="font-inter underline hover:text-slate-800">
+          Already have an account,Login
+        </span>
+      </Link>
     </section>
   );
 };

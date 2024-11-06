@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar from "../components/User/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer";
 
 const Shop = () => {
   return (
