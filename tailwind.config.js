@@ -17,6 +17,7 @@ export default {
       boxShadow: {
         icon: "0px 8px 32px 0px rgba(51, 38, 174, 0.08)",
         card: "0px 1px 4px 0px rgba(21, 34, 50, 0.08)",
+        filter:'0px 1px 4px 0px rgba(191,170,162,0.08)',
       },
       keyframes: {
         bounce: {

@@ -14,17 +14,22 @@ const Shop = () => {
   const [filterParams, setFilterParams] = useSearchParams();
   const concentration = filterParams.get("concentration");
   const fragrance = filterParams.get("fragrance");
+  console.log(concentration)
+  console.log(fragrance)
   const filteredProducts = data.perfumes.filter(
-    (product) => concentration && product.concentration
-  );
+    (product) => concentration && product.concentration.toLowerCase()=== concentration.toLowerCase()  || fragrance && product.fragrance.toLowerCase()===fragrance.toLowerCase()
+     );
   const renderProducts = () => {
     if (concentration || fragrance) {
-      return filteredProducts.map((product) => (
+      return filteredProducts.map((product,index) => (
         <Product
-          key={product.id}
+          key={index}
           imageUrl={sauvage}
           name={product.name}
+          scent={product.fragrance}
           price={product.price}
+          discountedPrice={product.discountedPrice}
+
         />
       ));
     }

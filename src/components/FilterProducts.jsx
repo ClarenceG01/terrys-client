@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import useQueryParams from "../hooks/useQueryParams";
 
 const FilterProducts = () => {
-  const navigate = useNavigate();
   const [filter, setFilter] = useState("all");
-
+  const { search } = useLocation();
   const { removeQueryParams } = useQueryParams();
 
   const handleFilterChange = (event) => {
@@ -30,19 +29,24 @@ const FilterProducts = () => {
             "Body Mist",
           ];
 
-    return options.map((option, index) => (
-      <NavLink
-        className="text-sm bg-white border-2 border-black rounded-md p-1 md:py-2 md:px-1 text-secondary & hover:bg-secondary hover:text-white"
-        key={index}
-        to={`?${filter}=${option}`}
-        end={index === 0}
-      >
-        {option}
-      </NavLink>
-    ));
+    return options.map((option, index) => {
+      const isActive = search === `?${filter}=${encodeURIComponent(option)}`;
+      console.log(isActive);
+      return (
+        <NavLink
+          key={index}
+          to={`?${filter}=${option}`}
+          className={`text-sm border-2 border-black rounded-md p-1 md:py-2 md:px-1 text-secondary hover:bg-secondary hover:text-white ${
+            isActive ? "bg-red-500 text-white" : "bg-white"
+          }`}
+        >
+          {option}
+        </NavLink>
+      );
+    });
   };
   return (
-    <div className="flex flex-col md:flex-row justify-evenly md:justify-between md:items-center h-full">
+    <div className="flex flex-col md:flex-row justify-evenly md:justify-between md:items-center h-full ">
       <div>
         <label htmlFor="filter">Filter by:</label>
         <select id="filter" name="filter" onChange={handleFilterChange}>
@@ -51,9 +55,7 @@ const FilterProducts = () => {
           <option value="concentration">Concentration</option>
         </select>
       </div>
-      <div className="flex justify-evenly w-full md:w-1/3">
-        {renderButtons()}
-      </div>
+      <div className="flex justify-evenly ">{renderButtons()}</div>
     </div>
   );
 };
