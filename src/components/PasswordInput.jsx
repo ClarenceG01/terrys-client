@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 const PasswordInput = ({ value, onChange, placeholder, className }) => {
   const [showPassword, setShowPassword] = useState(false);
+  console.log(className);
   return (
-    <div className={`relative ${className}`}>
+    <div className="mb-2 relative">
       <input
         type={showPassword ? "text" : "password"}
         placeholder={placeholder}
         value={value}
         name="password"
         onChange={onChange}
-        className="border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg"
+        className={`border-1 ${className} border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg`}
       />
       {showPassword ? (
         <AiOutlineEyeInvisible

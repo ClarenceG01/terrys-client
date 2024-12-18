@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import errorToast from "../../utils/errorToast";
+import errorToast from "../utils/errorToast";
 import { useNavigate, Link } from "react-router-dom";
-import PasswordInput from "../PasswordInput";
+import PasswordInput from "./PasswordInput";
 
 const Form1 = () => {
   const navigate = useNavigate();
@@ -67,12 +67,12 @@ const Form1 = () => {
   };
 
   return (
-    <section className="w-full md:w-1/2 h-screen font-inter flex flex-col justify-center items-center">
+    <section className="w-full md:w-1/2 h-screen font-poppins flex flex-col justify-center items-center">
       <div className="flex flex-col items-center text-[#333]">
         <span className="text-2xl">Hello!</span>
         <span className="text-lg">Sign Up to Get Started</span>
       </div>
-      <form className=" h-1/2 flex flex-col justify-between">
+      <form className="w-2/3 flex flex-col justify-between items-center">
         <input
           type="text"
           id="username"
@@ -81,17 +81,15 @@ const Form1 = () => {
           aria-describedby="usernote"
           onChange={(e) => setUsername(e.target.value)}
           autoComplete="off"
-          className={`border-1 py-3 px-7 w-80 rounded-3xl text-lg ${
-            formErrors.hasOwnProperty("username")
-              ? " border-red-600"
-              : "border-[#b9b8b8]"
+          className={`border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg mb-2 ${
+            formErrors.hasOwnProperty("username") ? " border-red-600" : ""
           }`}
         />
         <span
           className={
             formErrors.hasOwnProperty("username")
-              ? " border-red-600"
-              : "border-[#b9b8b8]"
+              ? "text-red-600 w-full text-center"
+              : "hiddden"
           }
         >
           {formErrors.username}
@@ -104,7 +102,7 @@ const Form1 = () => {
           aria-describedby="usernote"
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="off"
-          className={`border-1 py-3 px-7 w-80 rounded-3xl text-lg ${
+          className={`border-1 py-3 px-7 w-80 rounded-3xl text-lg mb-2 ${
             formErrors.hasOwnProperty("username")
               ? " border-red-600"
               : "border-[#b9b8b8]"
@@ -112,7 +110,9 @@ const Form1 = () => {
         />
         <span
           className={
-            formErrors.hasOwnProperty("email") ? "show-error" : "offset-error"
+            formErrors.hasOwnProperty("email")
+              ? "text-red-600 w-full text-center"
+              : "hiddden"
           }
         >
           {formErrors.email}
@@ -121,12 +121,15 @@ const Form1 = () => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={
+            formErrors.hasOwnProperty("password") ? "border-red-600" : ""
+          }
         />
         <span
           className={
             formErrors.hasOwnProperty("password")
-              ? "show-error"
-              : "offset-error"
+              ? "text-red-600 w-full text-center"
+              : "hiddden"
           }
         >
           {formErrors.password}
@@ -135,17 +138,20 @@ const Form1 = () => {
           placeholder="Confirm Password"
           value={cpassword}
           onChange={(e) => setCpassword(e.target.value)}
+          className={
+            formErrors.hasOwnProperty("password") ? "border-red-600" : ""
+          }
         />
         <span
           className={
             formErrors.hasOwnProperty("cpassword")
-              ? "show-error"
-              : "offset-error"
+              ? "text-red-600 w-full text-center"
+              : "hiddden"
           }
         >
           {formErrors.cpassword}
         </span>
-        <div className="my-4 text-white flex justify-between">
+        <div className="my-4 w-full px-20 text-white flex justify-between">
           <Link to="/">
             <button className="bg-primary py-1 px-2 rounded-lg cursor-pointer">
               Back Home

@@ -1,4 +1,4 @@
-import Left from "./Left";
+import Left from "../components/Left";
 import { Outlet } from "react-router-dom";
 
 const FormLayout = () => {

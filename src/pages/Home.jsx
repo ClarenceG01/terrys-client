@@ -9,12 +9,10 @@ import Navbar from "../components/Navbar";
 const Home = () => {
   return (
     <div>
-      <Navbar />
       <Hero />
       <Brands />
       <Arrivals />
       <Community />
-      <Footer />
     </div>
   );
 };

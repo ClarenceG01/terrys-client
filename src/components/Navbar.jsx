@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 const Navbar = () => {
@@ -9,7 +9,10 @@ const Navbar = () => {
   };
   return (
     <div className="flex justify-between items-center py-4 px-4 ">
-      <div className="flex items-center">
+      <div
+        className="flex items-center cursor-pointer space-x-2"
+        onClick={() => navigate("/")}
+      >
         <img
           src={logo}
           alt="Company's logo"

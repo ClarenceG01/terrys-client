@@ -1,0 +1,44 @@
+{
+  "perfumes": [
+    {
+      "name": "Velvet Oud",
+      "concentration": "Eau de Parfum",
+      "fragrance": "Woody",
+      "image": "/sauvage.jpg",
+      "price": 80,
+      "discountedPrice": 65
+    },
+    {
+      "name": "Citrus Bloom",
+      "concentration": "Eau de Toilette",
+      "fragrance": "Floral",
+      "image": "/sauvage.jpg",
+      "price": 50,
+      "discountedPrice": 45
+    },
+    {
+      "name": "Mystic Amber",
+      "concentration": "Parfum",
+      "fragrance": "fruity",
+      "image": "/sauvage.jpg",
+      "price": 120,
+      "discountedPrice": 100
+    },
+    {
+      "name": "Ocean Mist",
+      "concentration": "Eau de Cologne",
+      "fragrance": "Aquatic Fresh",
+      "image": "/sauvage.jpg",
+      "price": 40,
+      "discountedPrice": 35
+    },
+    {
+      "name": "Jasmine Noir",
+      "concentration": "Eau de Parfum",
+      "fragrance": "Floral Woody",
+      "image": "/sauvage.jpg",
+      "price": 90,
+      "discountedPrice": 75
+    }
+  ]
+}

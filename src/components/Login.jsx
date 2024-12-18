@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import baseUrl from "../../utils/baseUrl";
-import successToast from "../../utils/successToast";
-import LoadingButton from "../LoadingButton";
-import PasswordInput from "../PasswordInput";
+import baseUrl from "../utils/baseUrl";
+import successToast from "../utils/successToast";
+import LoadingButton from "./LoadingButton";
+import PasswordInput from "./PasswordInput";
 
 const Login = () => {
   const url = baseUrl();
@@ -86,9 +86,13 @@ const Login = () => {
             className="border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg"
           />
         </div>
-        <PasswordInput value={user.password} onChange={handleChange} />
+        <PasswordInput
+          value={user.password}
+          onChange={handleChange}
+          placeholder="Enter Password"
+        />
         {response && (
-          <span className={error ? "error-msg" : "success-msg"}>
+          <span className={error ? "text-red-700" : "text-green-600"}>
             {responseMsg}
           </span>
         )}

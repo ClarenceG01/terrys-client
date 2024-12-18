@@ -1,10 +1,10 @@
 import React from "react";
-import boss from "/public/boss.png";
-import chan from "/public/chan.png";
-import dg from "/public/d&g.png";
-import dior from "/public/dior.png";
-import giv from "/public/giv.png";
-import vs from "/public/vs.png";
+import boss from "/boss.png";
+import chan from "/chan.png";
+import dg from "/d&g.png";
+import dior from "/dior.png";
+import giv from "/giv.png";
+import vs from "/vs.png";
 
 const Brands = () => {
   return (

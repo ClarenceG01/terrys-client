@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "/public/hero.png";
+import hero from "/hero.png";
 
 const Left = () => {
   return (

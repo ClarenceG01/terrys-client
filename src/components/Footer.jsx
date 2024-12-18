@@ -1,5 +1,4 @@
 import React from "react";
-
 import facebook from "/f.svg";
 import ig from "/ig.svg";
 import twitter from "/twitter.svg";
