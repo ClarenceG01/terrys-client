@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
@@ -23,10 +23,10 @@ const Navbar = () => {
         <span className="text-lg md:text-3xl font-bodoni">Terry's</span>
       </div>
       <div className="hidden md:flex md:items-center text-xl font-normal cursor-pointer space-x-6 nav-links">
-        <a href="#new-arrivals">New Arrivals</a>
-        <a href="">Best Sellers</a>
-        <a href="">Shop</a>
-        <a href="#promo">Contact Us</a>
+        <Link to="/#new-arrivals">New Arrivals</Link>
+        <Link to="">Best Sellers</Link>
+        <Link to="/shop">Shop</Link>
+        <Link to="/#promo">Contact Us</Link>
         <button
           onClick={handleLogin}
           className="bg-black text-white px-4 py-2 rounded-lg hover:bg-primary"

@@ -12,16 +12,19 @@ const Shop = () => {
   const { pathname } = useLocation();
   const displayName = pathname.substring(1).toLocaleUpperCase();
   const [filterParams, setFilterParams] = useSearchParams();
+
   const concentration = filterParams.get("concentration");
   const fragrance = filterParams.get("fragrance");
-  console.log(concentration)
-  console.log(fragrance)
+
   const filteredProducts = data.perfumes.filter(
-    (product) => concentration && product.concentration.toLowerCase()=== concentration.toLowerCase()  || fragrance && product.fragrance.toLowerCase()===fragrance.toLowerCase()
-     );
+    (product) =>
+      (concentration &&
+        product.concentration.toLowerCase() === concentration.toLowerCase()) ||
+      (fragrance && product.fragrance.toLowerCase() === fragrance.toLowerCase())
+  );
   const renderProducts = () => {
     if (concentration || fragrance) {
-      return filteredProducts.map((product,index) => (
+      return filteredProducts.map((product, index) => (
         <Product
           key={index}
           imageUrl={sauvage}
@@ -29,7 +32,6 @@ const Shop = () => {
           scent={product.fragrance}
           price={product.price}
           discountedPrice={product.discountedPrice}
-
         />
       ));
     }
@@ -46,7 +48,7 @@ const Shop = () => {
     <>
       <HeaderImage imageUrl="/shop.jpg">{displayName}</HeaderImage>
       <Box>
-        <FilterProducts />
+        <FilterProducts onFilterClick={setFilterParams} />
       </Box>
       <Products>{renderProducts()}</Products>
     </>

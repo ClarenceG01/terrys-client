@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import useQueryParams from "../hooks/useQueryParams";
 
-const FilterProducts = () => {
+const FilterProducts = ({ onFilterClick }) => {
   const [filter, setFilter] = useState("all");
   const { search } = useLocation();
   const { removeQueryParams } = useQueryParams();
@@ -33,15 +33,15 @@ const FilterProducts = () => {
       const isActive = search === `?${filter}=${encodeURIComponent(option)}`;
       console.log(isActive);
       return (
-        <NavLink
+        <button
           key={index}
-          to={`?${filter}=${option}`}
+          onClick={() => onFilterClick({ [filter]: option })}
           className={`text-sm border-2 border-black rounded-md p-1 md:py-2 md:px-1 text-secondary hover:bg-secondary hover:text-white ${
             isActive ? "bg-red-500 text-white" : "bg-white"
           }`}
         >
           {option}
-        </NavLink>
+        </button>
       );
     });
   };
