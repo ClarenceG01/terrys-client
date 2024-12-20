@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { AiOutlineClear } from "react-icons/ai";
 import useQueryParams from "../hooks/useQueryParams";
 
 const FilterProducts = ({ onFilterClick }) => {
@@ -29,21 +30,36 @@ const FilterProducts = ({ onFilterClick }) => {
             "Body Mist",
           ];
 
-    return options.map((option, index) => {
-      const isActive = search === `?${filter}=${encodeURIComponent(option)}`;
-      console.log(isActive);
-      return (
+    return (
+      <div className="flex flex-wrap items-center">
+        {options.map((option, index) => {
+          const isActive =
+            search === `?${filter}=${encodeURIComponent(option)}`;
+          console.log(isActive);
+          return (
+            <button
+              key={index}
+              onClick={() => onFilterClick({ [filter]: option })}
+              className={`text-sm border-2 mr-1 border-black rounded-md p-1 md:py-2 md:px-1 text-secondary hover:bg-secondary hover:text-white ${
+                isActive ? "bg-red-500 text-white" : "bg-white"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
         <button
-          key={index}
-          onClick={() => onFilterClick({ [filter]: option })}
-          className={`text-sm border-2 border-black rounded-md p-1 md:py-2 md:px-1 text-secondary hover:bg-secondary hover:text-white ${
-            isActive ? "bg-red-500 text-white" : "bg-white"
-          }`}
+          onClick={() => {
+            onFilterClick({});
+            setFilter("all");
+          }}
+          className={`flex flex-row items-center text-sm shadow-filter bg-white text-red-600 p-1 md:py-2 md:px-1 ml-2`}
         >
-          {option}
+          <AiOutlineClear className="text-xl" />
+          Clear
         </button>
-      );
-    });
+      </div>
+    );
   };
   return (
     <div className="flex flex-col md:flex-row justify-evenly md:justify-between md:items-center h-full ">
@@ -55,7 +71,7 @@ const FilterProducts = ({ onFilterClick }) => {
           <option value="concentration">Concentration</option>
         </select>
       </div>
-      <div className="flex justify-evenly ">{renderButtons()}</div>
+      {renderButtons()}
     </div>
   );
 };
