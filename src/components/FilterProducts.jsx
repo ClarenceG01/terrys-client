@@ -33,9 +33,10 @@ const FilterProducts = ({ onFilterClick }) => {
     return (
       <div className="flex flex-wrap items-center">
         {options.map((option, index) => {
+          const queryParams = new URLSearchParams(search);
           const isActive =
-            search === `?${filter}=${encodeURIComponent(option)}`;
-          console.log(isActive);
+            queryParams.get(filter) === option ||
+            (!queryParams.get(filter) && option === "All");
           return (
             <button
               key={index}
