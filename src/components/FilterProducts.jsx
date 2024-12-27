@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { AiOutlineClear } from "react-icons/ai";
 import useQueryParams from "../hooks/useQueryParams";
 
-const FilterProducts = ({ onFilterClick }) => {
+const FilterProducts = ({ onFilterClick, filterParams }) => {
   const [filter, setFilter] = useState("all");
-  const { search } = useLocation();
   const { removeQueryParams } = useQueryParams();
 
   const handleFilterChange = (event) => {
@@ -33,7 +31,7 @@ const FilterProducts = ({ onFilterClick }) => {
     return (
       <div className="flex flex-wrap items-center">
         {options.map((option, index) => {
-          const queryParams = new URLSearchParams(search);
+          const queryParams = new URLSearchParams(filterParams);
           const isActive =
             queryParams.get(filter) === option ||
             (!queryParams.get(filter) && option === "All");

@@ -48,7 +48,10 @@ const Shop = () => {
     <>
       <HeaderImage imageUrl="/shop.jpg">{displayName}</HeaderImage>
       <Box>
-        <FilterProducts onFilterClick={setFilterParams} />
+        <FilterProducts
+          onFilterClick={setFilterParams}
+          filterParams={filterParams}
+        />
       </Box>
       <Products>{renderProducts()}</Products>
     </>

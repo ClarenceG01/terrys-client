@@ -5,13 +5,15 @@ import Shop from "./pages/Shop";
 import Form1 from "./components/Form1";
 import Form2 from "./components/Form2";
 import FormLayout from "./layout/FormLayout";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import MainLayout from "./layout/MainLayout";
 import Admin from "./components/Admin";
 import AdminLayout from "./layout/AdminLayout";
 import AdminProducts from "./components/AdminProducts";
 import AdminCentre from "./components/AdminCentre";
+import NotFound from "./components/NotFound";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
@@ -20,6 +22,7 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="user" element={<FormLayout />}>
             <Route index element={<Login />} />

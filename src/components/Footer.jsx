@@ -5,7 +5,7 @@ import twitter from "/twitter.svg";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between md:justify-evenly bg-black pt-12 pb-20 px-10 text-white font-roboto">
+    <div className="flex flex-col md:flex-row justify-between md:justify-evenly bg-black pt-12 pb-20 px-10 text-white font-roboto ">
       <div className="flex flex-col justify-between h-32 md:h-44 mb-8 ">
         <span className="text-4xl md:text-5xl font-poppins">Terrys</span>
         <p className="text-lg md:text-xl">
