@@ -57,7 +57,7 @@ const Form1 = () => {
       errorToast("Please fix the form errors before proceeding");
       return;
     }
-    navigate("/signup/credentials", {
+    navigate("/registration/complete", {
       state: {
         username: username,
         email: email,

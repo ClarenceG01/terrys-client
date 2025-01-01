@@ -103,7 +103,7 @@ const Form1 = () => {
           />
         </div>
         <div className="div-btn">
-          <NavLink to="/signup">
+          <NavLink to="/registration">
             <button>Back</button>
           </NavLink>
           <button type="submit">Submit</button>

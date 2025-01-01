@@ -11,6 +11,7 @@ import AdminLayout from "./layout/AdminLayout";
 import AdminProducts from "./components/AdminProducts";
 import AdminCentre from "./components/AdminCentre";
 import NotFound from "./components/NotFound";
+import AuthRequired from "./layout/AuthRequired";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,16 +20,22 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          {/* main layout */}
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="shop" element={<Shop />} />
             <Route path="*" element={<NotFound />} />
           </Route>
+          {/* form layout */}
           <Route path="user" element={<FormLayout />}>
             <Route index element={<Login />} />
-            <Route path="signup" element={<Form2 />} />
+            <Route path="registration" element={<Form2 />} />
+            <Route path="registration/complete" element={<Form1 />} />
           </Route>
-          <Route path="signup/credentials" element={<Form1 />} />
+          {/* auth required */}
+          <Route element={<AuthRequired />}>
+            <Route path="shop" element={<Shop />} />
+          </Route>
+          {/* admin layout */}
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<Admin />} />
             <Route path="products" element={<AdminProducts />} />

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import baseUrl from "../utils/baseUrl";
 import successToast from "../utils/successToast";
+import errorToast from "../utils/errorToast";
 import LoadingButton from "./LoadingButton";
 import PasswordInput from "./PasswordInput";
 
@@ -17,6 +18,8 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [response, setResponse] = useState(null);
   const [responseMsg, setResponseMsg] = useState("");
+
+  const location = useLocation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,6 +75,11 @@ const Login = () => {
         <span className="text-2xl">Hello!</span>
         <span className="text-lg">Welcome Back</span>
       </div>
+      {location && location.state && location.state.message && (
+        <h3 className="text-red-600 mb-2 font-inter font-bold">
+          {location.state.message}
+        </h3>
+      )}
       <form
         onSubmit={handleSubmit}
         className="w-full h-1/3 flex flex-col justify-between items-center"
@@ -83,7 +91,7 @@ const Login = () => {
             value={user.credential}
             name="credential"
             onChange={handleChange}
-            className="border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg"
+            className="border-1 border-[#b9b8b8] py-3 px-7 w-80 rounded-3xl text-lg mb-4"
           />
         </div>
         <PasswordInput
@@ -107,7 +115,7 @@ const Login = () => {
         >
           Twende
         </LoadingButton>
-        <Link to="signup">
+        <Link to="registration">
           <span className="font-inter underline hover:text-slate-800">
             Don't have an account,Sign Up
           </span>
