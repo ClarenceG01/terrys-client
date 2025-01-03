@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Product = ({ name, image, ...rest }) => {
-  const { scent, discountedPrice, price } = rest;
+const Product = ({ id, name, image, scent, discountedPrice, price }) => {
+  const navigate = useNavigate();
+  const handleProductClick = () => {
+    navigate(`${id}`);
+  };
   return (
-    <div className="relative bg-slate-100 font-poppins w-full md:h-96 mx-auto  shadow-lg shadow-slate-500/50 cursor-pointer group">
+    <div
+      className="relative bg-slate-100 font-poppins w-full md:h-96 mx-auto  shadow-lg shadow-slate-500/50 cursor-pointer group"
+      onClick={handleProductClick}
+    >
       <img src={image} alt="" className="h-3/4 w-full" />
       <div className=" h-1/4 flex flex-col justify-between pt-2 pb-8 px-2">
         <span className="text-xl xl:text-2xl">{name}</span>

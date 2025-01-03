@@ -27,14 +27,13 @@ const FilterProducts = ({ onFilterClick, filterParams }) => {
             "Perfume Oil",
             "Body Mist",
           ];
-
+    const queryParams = new URLSearchParams(filterParams);
     return (
       <div className="flex flex-wrap items-center">
         {options.map((option, index) => {
-          const queryParams = new URLSearchParams(filterParams);
           const isActive =
             queryParams.get(filter) === option ||
-            (!queryParams.get(filter) && option === "All");
+            (!queryParams.get(filter) && option === "all");
           return (
             <button
               key={index}
@@ -47,24 +46,31 @@ const FilterProducts = ({ onFilterClick, filterParams }) => {
             </button>
           );
         })}
-        <button
-          onClick={() => {
-            onFilterClick({});
-            setFilter("all");
-          }}
-          className={`flex flex-row items-center text-sm shadow-filter bg-white text-red-600 p-1 md:py-2 md:px-1 ml-2`}
-        >
-          <AiOutlineClear className="text-xl" />
-          Clear
-        </button>
+        {queryParams.size === 0 ? null : (
+          <button
+            onClick={() => {
+              removeQueryParams();
+              setFilter("all");
+            }}
+            className={`flex flex-row items-center text-sm shadow-filter bg-white text-red-600 p-1 md:py-2 md:px-1 ml-2`}
+          >
+            <AiOutlineClear className="text-xl" />
+            Clear
+          </button>
+        )}
       </div>
     );
   };
   return (
-    <div className="flex flex-col md:flex-row justify-evenly md:justify-between md:items-center h-full ">
+    <div className="flex flex-col md:flex-row justify-evenly md:justify-between md:items-center px-3 h-20 bg-primary ">
       <div>
         <label htmlFor="filter">Filter by:</label>
-        <select id="filter" name="filter" onChange={handleFilterChange}>
+        <select
+          id="filter"
+          name="filter"
+          onChange={handleFilterChange}
+          value={filter}
+        >
           <option value="all">All</option>
           <option value="fragrance">Fragrance Family</option>
           <option value="concentration">Concentration</option>

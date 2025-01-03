@@ -6,6 +6,7 @@ const useQueryParams = () => {
 
   const removeQueryParams = () => {
     const { pathname } = location;
+    console.log("path" + pathname);
     navigate(pathname);
   };
   return { removeQueryParams };

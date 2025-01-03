@@ -3,7 +3,7 @@
 // 3. If user is not authenticated we will redirect the user to login page using the Navigate component
 import { Outlet, Navigate } from "react-router-dom";
 export default function AuthRequired() {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return isAuthenticated ? (
     <Outlet />
   ) : (
